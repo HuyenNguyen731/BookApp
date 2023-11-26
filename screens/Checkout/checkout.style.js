@@ -1,36 +1,35 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, StatusBar } from "react-native";
+
 import { COLORS, SIZES } from "../../constants";
+
 const styles = StyleSheet.create({
     container: {
-        color: COLORS.black,
-        paddingLeft: 20,
-        paddingRight: 20,
+        padding: 20,
+        backgroundColor: COLORS.white,
+        marginTop: StatusBar.currentHeight || 0,
         flex: 1,
         maxWidth: 960,
-        marginTop: 30
     },
-    order: {
+    formContainer: {
         flexGrow: 1,
-        overflow: "scroll",
     },
-    payment: {
-        marginBottom: 80,
+    inputLabel: {
+        marginBottom: 20,
     },
-    wrapper: {
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "space-between",
-        paddingTop: 10,
+    input: {
+        height: 55,
+        padding: 10,
+        borderWidth: 1,
+        fontSize: SIZES.md,
+        borderRadius: 10,
+        borderColor: COLORS.grayBorder,
+        backgroundColor: COLORS.grayF3,
     },
-    text: {
+    label: {
         fontSize: SIZES.lg,
-        color: COLORS.grayBorder,
-    },
-    total: {
-        fontSize: SIZES.lg,
+        marginBottom: 8,
     },
     button: {
-        flex: 1,
         padding: 16,
         marginTop: 20,
         borderRadius: 8,
@@ -51,6 +50,10 @@ const styles = StyleSheet.create({
     btnText: {
         color: COLORS.white,
         fontSize: SIZES.xl,
+    },
+    errorText: {
+        color: COLORS.red,
+        textAlign: "center",
     },
 });
 

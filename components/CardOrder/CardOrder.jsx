@@ -11,7 +11,7 @@ const CardOrder = ({
                        quantity,
                        token,
                        orderItemId,
-                       // fetchData,
+                       fetchData,
                    }) => {
     const [count, setCount] = useState(quantity);
 
@@ -35,7 +35,7 @@ const CardOrder = ({
 
             if (res.status === 200) {
                 setCount(newCount);
-                // fetchData();
+                fetchData();
             }
         } catch (error) {
             console.error("Lỗi mua hàng: ", error);
@@ -61,7 +61,7 @@ const CardOrder = ({
                 );
 
                 if (deleteRes.status === 200) {
-                    // fetchData();
+                    fetchData();
                 }
             } else {
                 const res = await axios.put(

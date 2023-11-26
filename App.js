@@ -3,6 +3,8 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import {Cart, Login, Signup, Welcome} from "./screens";
 import BottomTabNavigation from "./navigation/BottomTabNavigation";
 import BookDetails from "./screens/BookDetails/BookDetails";
+import Checkout from "./screens/Checkout/Checkout";
+import Success from "./screens/Success/Success";
 
 const Stack = createNativeStackNavigator();
 
@@ -48,7 +50,12 @@ export default function App() {
           />
           <Stack.Screen
               name="Checkout"
-              component={BottomTabNavigation}
+              component={Checkout}
+              options={{ headerShown: false }}
+          />
+          <Stack.Screen
+              name="Success"
+              component={Success}
               options={{ headerShown: false }}
           />
       </Stack.Navigator>

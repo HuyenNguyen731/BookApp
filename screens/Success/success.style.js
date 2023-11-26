@@ -1,38 +1,40 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, StatusBar } from "react-native";
+
 import { COLORS, SIZES } from "../../constants";
+
 const styles = StyleSheet.create({
     container: {
-        color: COLORS.black,
-        paddingLeft: 20,
-        paddingRight: 20,
+        padding: 20,
+        backgroundColor: COLORS.white,
+        marginTop: StatusBar.currentHeight || 0,
         flex: 1,
-        maxWidth: 960,
-        marginTop: 30
+        justifyContent: "center"
     },
-    order: {
-        flexGrow: 1,
-        overflow: "scroll",
+    imgContainer: {
+        height: 208,
+        width: 213,
+        marginLeft: "auto",
+        marginRight: "auto",
+        marginTop: 50,
+        marginBottom: 20,
     },
-    payment: {
-        marginBottom: 80,
+    img: {
+        height: 208,
+        width: 213,
+        objectFit: "cover",
     },
-    wrapper: {
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "space-between",
-        paddingTop: 10,
+    title: {
+        marginTop: 12,
+        marginBottom: 12,
+        fontSize: SIZES.xxl,
+        textAlign: "center",
     },
-    text: {
-        fontSize: SIZES.lg,
-        color: COLORS.grayBorder,
-    },
-    total: {
-        fontSize: SIZES.lg,
+    desc: {
+        textAlign: "center",
     },
     button: {
-        flex: 1,
         padding: 16,
-        marginTop: 20,
+        marginTop: 100,
         borderRadius: 8,
         marginBottom: 20,
         shadowColor: "#000",

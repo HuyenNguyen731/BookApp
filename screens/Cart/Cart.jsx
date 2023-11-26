@@ -5,6 +5,7 @@ import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import {useNavigation} from "@react-navigation/native";
 import CardOrder from "../../components/CardOrder/CardOrder";
+import Button from "../../components/Button";
 
 const Cart = () => {
     const navigation = useNavigation();
@@ -73,7 +74,7 @@ const Cart = () => {
                         price={item?.book?.price}
                         quantity={item?.quantity}
                         orderItemId={item?.orderItemId}
-                        // fetchData={fetchData}
+                        fetchData={fetchData}
                     />
                 ))}
             </View>
@@ -82,9 +83,15 @@ const Cart = () => {
                     <Text style={styles.text}>Tổng tiền:</Text>
                     <Text style={styles.total}>{data?.totalAmount} đ</Text>
                 </View>
-                <TouchableOpacity style={styles.button} onPress={handleCheckOut}>
-                    <Text style={styles.btnText}>Thanh toán</Text>
-                </TouchableOpacity>
+                <Button
+                    title="Thanh toán"
+                    filled
+                    onPress={handleCheckOut}
+                    style={{
+                        marginTop: 18,
+                        marginBottom: 4,
+                    }}
+                />
             </View>
         </View>
     );
