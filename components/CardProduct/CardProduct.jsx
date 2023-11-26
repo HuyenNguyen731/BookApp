@@ -9,7 +9,7 @@ const CardProduct = ({ id, name, price, url, author }) => {
     const navigation = useNavigation();
 
     const handlePress = () => {
-        // navigation.navigate("BookDetails", { id });
+        navigation.navigate("BookDetails", { id });
     };
 
     return (

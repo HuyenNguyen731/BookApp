@@ -62,7 +62,6 @@ const Category = () => {
                         renderItem={({ item, index }) => (
                             <View key={index}>
                                 <CardCategory name={item?.name} url={item?.image} />
-                                {/*<Text>{item?.name}</Text>*/}
                             </View>
                         )}
                         horizontal

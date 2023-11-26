@@ -1,7 +1,8 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { Login, Signup, Welcome } from "./screens";
+import {Cart, Login, Signup, Welcome} from "./screens";
 import BottomTabNavigation from "./navigation/BottomTabNavigation";
+import BookDetails from "./screens/BookDetails/BookDetails";
 
 const Stack = createNativeStackNavigator();
 
@@ -37,7 +38,17 @@ export default function App() {
         />
           <Stack.Screen
               name="BookDetails"
-              component={Welcome}
+              component={BookDetails}
+              options={{ headerShown: false }}
+          />
+          <Stack.Screen
+              name="CartDetails"
+              component={Cart}
+              options={{ headerShown: false }}
+          />
+          <Stack.Screen
+              name="Checkout"
+              component={BottomTabNavigation}
               options={{ headerShown: false }}
           />
       </Stack.Navigator>
