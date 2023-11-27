@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import {View, Text, TouchableOpacity, Alert} from "react-native";
+import {View, Text, Alert} from "react-native";
 import styles from "./cart.style";
 import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import {useNavigation} from "@react-navigation/native";
+import {useFocusEffect, useNavigation} from "@react-navigation/native";
 import CardOrder from "../../components/CardOrder/CardOrder";
 import Button from "../../components/Button";
 
@@ -12,46 +12,24 @@ const Cart = () => {
     const [data, setData] = useState([]);
     const [token, setToken] = useState(null);
 
-    useEffect(() => {
-        AsyncStorage.getItem("TOKEN")
-            .then((TOKEN) => {
-                if (TOKEN) {
-                    setToken(TOKEN);
-                } else {
-                    console.error("Token does not exist");
-                }
-            })
-            .catch((error) => {
-                console.error("Error when getting token from AsyncStorage: ", error);
-            });
-    }, []);
-
     const fetchData = async () => {
         try {
-            if (!token) {
-                Alert.alert("Please log in to make a purchase.");
-                return;
-            }
-
-            const response = await axios.get(`http://192.168.36.1:7135/api/orders/cart`, {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            });
+            const response = await axios.get(
+                `http://192.168.36.1:7135/api/orders/cart`,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            );
 
             if (response.status === 200) {
                 setData(response.data.data);
             }
         } catch (error) {
-            console.error("Lỗi khi gọi API: ", error);
+            console.error("Error calling API: ", error);
         }
     };
-
-    useEffect(() => {
-        if (token) {
-            fetchData();
-        }
-    }, [token]);
 
     const handleCheckOut = () => {
         const orderId = data?.orderId;
@@ -60,6 +38,29 @@ const Cart = () => {
             navigation.navigate("Checkout", {orderId});
         }
     };
+
+    useFocusEffect(
+        React.useCallback(() => {
+            fetchData();
+        }, [token]) // Fetch data when token changes
+    );
+
+    useEffect(() => {
+        const fetchToken = async () => {
+            try {
+                const TOKEN = await AsyncStorage.getItem("TOKEN");
+                if (TOKEN) {
+                    setToken(TOKEN);
+                } else {
+                    console.error("Token does not exist");
+                }
+            } catch (error) {
+                console.error("Error when getting token from AsyncStorage: ", error);
+            }
+        };
+
+        fetchToken();
+    }, []);
 
     return (
         <View style={styles.container}>

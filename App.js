@@ -45,11 +45,6 @@ export default function App() {
               options={{ headerShown: false }}
           />
           <Stack.Screen
-              name="CartDetails"
-              component={Cart}
-              options={{ headerShown: false }}
-          />
-          <Stack.Screen
               name="Checkout"
               component={Checkout}
               options={{ headerShown: false }}

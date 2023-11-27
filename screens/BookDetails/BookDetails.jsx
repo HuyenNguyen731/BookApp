@@ -58,7 +58,7 @@ const BookDetails = () => {
             );
 
             if (res.status === 200) {
-                navigation.navigate("CartDetails");
+                navigation.navigate("Cart");
             }
         } catch (error) {
             console.error("Lỗi mua hàng: ", error);
