@@ -23,9 +23,10 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         padding: 8,
         minWidth: 100,
+        backgroundColor: COLORS.grayF3,
     },
     buttonCancel: {
-        backgroundColor: COLORS.primary,
+        backgroundColor: COLORS.red,
         padding: 5,
         borderRadius: 20,
         minWidth: 60,

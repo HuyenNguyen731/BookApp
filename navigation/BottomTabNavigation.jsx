@@ -4,6 +4,7 @@ import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
 import {Ionicons} from "@expo/vector-icons";
 import {COLORS} from "../constants/index";
 import {Home, Cart, Profile} from "../screens";
+import Order from "../screens/Order/Order";
 
 const Tab = createBottomTabNavigator();
 
@@ -33,6 +34,12 @@ const BottomTabNavigation = () => {
             <Tab.Screen name="Cart" component={Cart} options={{
                 tabBarIcon: ({focused}) => {
                     return <Ionicons name={focused ? "cart" : "cart-outline"} size={24}
+                                     color={focused ? COLORS.primary : COLORS.gray}/>
+                }
+            }}/>
+            <Tab.Screen name="Order" component={Order} options={{
+                tabBarIcon: ({focused}) => {
+                    return <Ionicons name={focused ? "list" : "list-outline"} size={24}
                                      color={focused ? COLORS.primary : COLORS.gray}/>
                 }
             }}/>

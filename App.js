@@ -5,6 +5,7 @@ import BottomTabNavigation from "./navigation/BottomTabNavigation";
 import BookDetails from "./screens/BookDetails/BookDetails";
 import Checkout from "./screens/Checkout/Checkout";
 import Success from "./screens/Success/Success";
+import OrderDetails from "./screens/OrderDetails/OrderDetails";
 
 const Stack = createNativeStackNavigator();
 
@@ -58,6 +59,11 @@ export default function App() {
               component={Success}
               options={{ headerShown: false }}
           />
+        <Stack.Screen
+            name="OrderDetails"
+            component={OrderDetails}
+            options={{ headerShown: false }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

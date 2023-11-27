@@ -52,25 +52,25 @@ const CardStatus = ({ status, item, onCancelOrder }) => {
     }, []);
 
     const handleDetails = () => {
-        navigation.navigate("Home", orderId);
+        navigation.navigate("OrderDetails", orderId);
     }
 
     return (
         <View style={styles.card}>
             <View style={[styles.flex, { justifyContent: "space-between" }]}>
-                <Text>Order №0000{orderId}</Text>
+                <Text>Mã №0000{orderId}</Text>
                 {(status === "1" || status === "2") && (
                     <TouchableOpacity style={styles.buttonCancel} onPress={handleCancel}>
-                        <Text style={styles.btnTextCancel}>Cancel</Text>
+                        <Text style={styles.btnTextCancel}>Hủy</Text>
                     </TouchableOpacity>
                 )}
             </View>
             <View style={styles.flex}>
-                <Text style={styles.textGray}>Date: </Text>
+                <Text style={styles.textGray}>Ngày: </Text>
                 <Text>{dayjs(orderDate).format("DD/MM/YYYY, h:mm A")}</Text>
             </View>
             <View style={styles.flex}>
-                <Text style={styles.textGray}>Total Amount: </Text>
+                <Text style={styles.textGray}>Tổng tiền: </Text>
                 <Text>{totalAmount} đ</Text>
             </View>
             <View
@@ -94,31 +94,15 @@ const CardStatus = ({ status, item, onCancelOrder }) => {
                         },
                     ]}
                 >
-                    {/*<TouchableOpacity style={styles.button}>*/}
-                    {/*    <Link*/}
-                    {/*        href={{*/}
-                    {/*            pathname: "/order-details/[id]",*/}
-                    {/*            params: { id: orderId },*/}
-                    {/*        }}*/}
-                    {/*        style={styles.btnText}*/}
-                    {/*    >*/}
-                    {/*        Details*/}
-                    {/*    </Link>*/}
-                    {/*</TouchableOpacity>*/}
-                    <Button
-                        title="Chi tiết"
-                        filled
-                        onPress={handleDetails}
-                        style={{
-                            marginTop: 18,
-                            marginBottom: 4,
-                        }}
-                    />
+                    <TouchableOpacity style={styles.button} onPress={handleDetails}>
+                        <Text style={styles.btnText}>Details</Text>
+                    </TouchableOpacity>
+
                 </View>
-                {status === "1" && <Text style={styles.textOrange}>Pending</Text>}
-                {status === "2" && <Text style={styles.textOrange}>Confirmed</Text>}
-                {status === "3" && <Text style={styles.textGreen}>Delivered</Text>}
-                {status === "4" && <Text style={styles.textRed}>Cancelled</Text>}
+                {status === "1" && <Text style={styles.textOrange}>Chờ xác nhận</Text>}
+                {status === "2" && <Text style={styles.textOrange}>Đã xác nhận</Text>}
+                {status === "3" && <Text style={styles.textGreen}>Đã giao</Text>}
+                {status === "4" && <Text style={styles.textRed}>Đã hủy</Text>}
             </View>
         </View>
     );
